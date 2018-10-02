@@ -5,6 +5,7 @@
       <map>
         <entry key="imageWizard">
           <value>
+<<<<<<< HEAD
             <PersistentState>
               <option name="children">
                 <map>
@@ -49,6 +50,9 @@
                 </map>
               </option>
             </PersistentState>
+=======
+            <PersistentState />
+>>>>>>> added goat png
           </value>
         </entry>
       </map>
