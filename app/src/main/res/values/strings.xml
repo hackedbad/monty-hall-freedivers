@@ -6,6 +6,7 @@
   <string name="ok_button">O K</string>
   <string name="new_button">New?</string>
   <string name="pick_a_door">Pick a door...</string>
+  <string name="choose_next_door">Do you want to change your door?</string>
   <string name="win_text">Win!</string>
   <string name="lost_text">Zonk</string>
 </resources>
