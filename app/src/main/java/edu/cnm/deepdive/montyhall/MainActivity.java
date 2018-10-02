@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 public class MainActivity extends AppCompatActivity {
 
   private Random rng;
   private int wins;
   private int losses;
   private int winningDoor;
-  private int selectionID = 0;
+  private int selectionID ;
   private ImageButton okButton;
   private ImageButton newGameButton;
   private ImageButton door1;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   void selectWinningSpace() {
-    winningDoor = rng.nextInt(3);
+    winningDoor = 0;//rng.nextInt(3);
     activeDoors.add(door1);
     activeDoors.add(door2);
     activeDoors.add(door3);
@@ -93,16 +94,23 @@ public class MainActivity extends AppCompatActivity {
   }
 
   void revealSecondDoor() {
-    messageField.setText("In revealSecondDoor");
-    //check if selected door is winningDoor
-    //if it isnt, reveal door that is not winningDoor
-    //if it is winningDoor, randomly select a losing door
-    //deactivate losing door
-    //door1.setEnabled(false);
-    //proceed to secondDoor
-    //door1.setEnabled(false);
+    messageField.setText("hi");
+    if (prizeDoor.getId() == selectionID) {
+      int goat = rng.nextInt(activeDoors.size());
+      activeDoors.get(goat).setEnabled(false);
+      activeDoors.get(goat).setImageResource(R.drawable.goatpic);
+    } else if (activeDoors.get(0).getId() == selectionID) {
+      int goat = 1;
+      activeDoors.get(goat).setEnabled(false);
+      activeDoors.get(goat).setImageResource(R.drawable.goatpic);
+    } else {
+      int goat = 0;
+      activeDoors.get(goat).setEnabled(false);
+      activeDoors.get(goat).setImageResource(R.drawable.goatpic);
+    }
+    secondDoor();
   }
-
+//TODO FIX RAND SELCTION
   void secondDoor() {
     messageField.setText(R.string.choose_next_door);
     //OK_Button set inactive if no doors are selected
