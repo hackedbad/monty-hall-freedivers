@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
     secondDoor();
   }
-//TODO FIX RAND SELCTION
+//TODO FI X RAND SELCTION
   void secondDoor() {
     messageField.setText(R.string.choose_next_door);
     //OK_Button set inactive if no doors are selected
