@@ -1,3 +1,11 @@
 <resources>
   <string name="app_name">Monty Hall</string>
+  <string name="banner_text">Let\'s Make a Deal!</string>
+  <string name="win_tally_format">%d wins</string>
+  <string name="lose_tally_format">%d losses</string>
+  <string name="ok_button">O K</string>
+  <string name="new_button">New?</string>
+  <string name="message">Pick a door...</string>
+  <string name="win_text">Win!</string>
+  <string name="lost_text">Zonk</string>
 </resources>
