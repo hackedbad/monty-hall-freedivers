@@ -8,4 +8,13 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+  <style name="door_1" parent="AppTheme">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height"></item>
+    <item name="android:scaleType">fitCenter</item>
+    <item name="android:adjustViewBounds">true</item>
+
+
+  </style>
+
 </resources>
