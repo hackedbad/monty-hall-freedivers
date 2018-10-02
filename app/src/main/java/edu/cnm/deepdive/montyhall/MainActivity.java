@@ -52,13 +52,9 @@ public class MainActivity extends AppCompatActivity {
     OnClickListener doorListener = (view) -> {
          // ((ImageButton) view).setImageResource();
       okButton.setEnabled(true);
+      selectionID = view.getId();
     };
-    okButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
 
-      }
-    };
     door1.setOnClickListener(doorListener);
     door2.setOnClickListener(doorListener);
     door3.setOnClickListener(doorListener);
@@ -70,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     winTally.setText(getString(R.string.win_tally_format, wins));
     loseTally.setText(getString(R.string.lose_tally_format, losses));
     bannerField.setText(R.string.banner_text);
+    selectWinningSpace();
   }
 
   void selectWinningSpace() {
@@ -78,14 +75,7 @@ public class MainActivity extends AppCompatActivity {
     activeDoors.add(door2);
     activeDoors.add(door3);
     prizeDoor = activeDoors.remove(winningDoor);
-  }
-
-  void selectDoor(ImageButton door) {
-    if (selectionID == 0) {
-
-    } else if (selectionID != door.getId()) {
-
-    }
+    firstDoor();
   }
 
   void firstDoor() {
@@ -93,14 +83,17 @@ public class MainActivity extends AppCompatActivity {
     //OK_Button set inactive if no doors are selected
     okButton.setEnabled(false);
     //When user selects a door, OK_Button is active
-
-    door1.setOnClickListener(doorListener);
-    door2.setOnClickListener(doorListener);
-    door3.setOnClickListener(doorListener);
     //When OK_Button is pressed, proceed to revealSecondDoor
+    okButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        revealSecondDoor();
+      }
+    });
   }
 
   void revealSecondDoor() {
+    messageField.setText("In revealSecondDoor");
     //check if selected door is winningDoor
     //if it isnt, reveal door that is not winningDoor
     //if it is winningDoor, randomly select a losing door
