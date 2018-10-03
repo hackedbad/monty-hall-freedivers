@@ -8,13 +8,13 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
-  <style name="door_1" parent="AppTheme">
+  <style name="DoorButton" parent="AppTheme">
     <item name="android:layout_width">0dp</item>
-    <item name="android:layout_height"></item>
+    <item name="android:layout_height">@dimen/portrait_door_height</item>
     <item name="android:scaleType">fitCenter</item>
     <item name="android:adjustViewBounds">true</item>
-
-
+    <item name="android:layout_margin">@dimen/door_margin</item>
+    <item name="android:padding">@dimen/door_padding</item>
   </style>
 
 </resources>
