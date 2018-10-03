@@ -4,6 +4,9 @@
   <dimen name="portrait_door_height">160dp</dimen>
   <dimen name="door_margin">8dp</dimen>
   <dimen name="door_padding">8dp</dimen>
+  <dimen name="portrait_goat_door_height">160dp</dimen>
+  <dimen name="goat_margin">8dp</dimen>
+  <dimen name="goat_padding">8dp</dimen>
   <dimen name="okay_width">160dp</dimen>
   <dimen name="okay_height">80dp</dimen>
   <dimen name="new_game_width">160dp</dimen>

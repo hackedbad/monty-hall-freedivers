@@ -30,4 +30,13 @@
     <item name="android:scaleType">fitCenter</item>
     <item name="android:adjustViewBounds">true</item>
   </style>
+
+  <style name="GoatButton" parent="AppTheme">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">@dimen/portrait_goat_door_height</item>
+    <item name="android:scaleType">fitCenter</item>
+    <item name="android:adjustViewBounds">true</item>
+    <item name="android:layout_margin">@dimen/goat_margin</item>
+    <item name="android:padding">@dimen/goat_padding</item>
+  </style>
 </resources>
