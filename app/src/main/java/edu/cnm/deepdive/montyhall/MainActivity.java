@@ -73,19 +73,21 @@ public class MainActivity extends AppCompatActivity {
     winTally.setText(getString(R.string.win_tally_format, wins));
     loseTally.setText(getString(R.string.lose_tally_format, losses));
     selectionID = 0;
-    newGameButton.setVisibility(View.INVISIBLE); //makes button invisible
+    newGameButton.setVisibility(View.INVISIBLE);
     okButton.setVisibility(View.VISIBLE);
     door1.setEnabled(true);
-    door1.setImageResource(R.drawable.reddoor);
+    door1.setVisibility(View.VISIBLE);
+    //door1.setImageResource(R.drawable.reddoor);
     door2.setEnabled(true);
-    door2.setImageResource(R.drawable.reddoor);
+    door2.setVisibility(View.VISIBLE);
+    //door2.setImageResource(R.drawable.reddoor);
     door3.setEnabled(true);
-    door3.setImageResource(R.drawable.reddoor);
+    door3.setVisibility(View.VISIBLE);
+    //door3.setImageResource(R.drawable.reddoor);
     selectWinningSpace();
   }
 
   void selectWinningSpace() {
-    activeDoors.clear();
     activeDoors.add(door1);
     activeDoors.add(door2);
     activeDoors.add(door3);
@@ -104,15 +106,21 @@ public class MainActivity extends AppCompatActivity {
     if (prizeDoor.getId() == selectionID) {
       int goat = rng.nextInt(activeDoors.size());
       activeDoors.get(goat).setEnabled(false);
-      activeDoors.get(goat).setImageResource(R.drawable.goatpic);
+      activeDoors.get(goat).setVisibility(View.INVISIBLE);
+      activeDoors.remove(goat);
+      //activeDoors.get(goat).setImageResource(R.drawable.goatpic);
     } else if (activeDoors.get(0).getId() == selectionID) {
       int goat = 1;
       activeDoors.get(goat).setEnabled(false);
-      activeDoors.get(goat).setImageResource(R.drawable.goatpic);
+      activeDoors.get(goat).setVisibility(View.INVISIBLE);
+      activeDoors.remove(1);
+      //activeDoors.get(goat).setImageResource(R.drawable.goatpic);
     } else {
       int goat = 0;
       activeDoors.get(goat).setEnabled(false);
-      activeDoors.get(goat).setImageResource(R.drawable.goatpic);
+      activeDoors.get(goat).setVisibility(View.INVISIBLE);
+      activeDoors.remove(0);
+      //activeDoors.get(goat).setImageResource(R.drawable.goatpic);
     }
     secondDoor();
   }
@@ -131,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
       messageField.setText(R.string.lost_text);
       losses++;
     }
+    activeDoors.get(0).setVisibility(View.INVISIBLE);
+    activeDoors.remove(0);
     okButton.setVisibility(View.INVISIBLE);
     newGameButton.setVisibility(View.VISIBLE);
     newGameButton.setOnClickListener(v -> startGame());
