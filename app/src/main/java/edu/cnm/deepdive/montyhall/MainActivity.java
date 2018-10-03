@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
   private int losses;
   private int winningDoor;
   private int selectionID ;
+  private ImageButton selectedDoor;
   private ImageButton okButton;
   private ImageButton newGameButton;
   private ImageButton door1;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     door2 = findViewById(R.id.door_2);
     door3 = findViewById(R.id.door_3);
     okButton = findViewById(R.id.ok_button);
+    newGameButton = findViewById(R.id.new_game_button);
     bannerField = findViewById(R.id.banner);
     messageField = findViewById(R.id.message);
     winTally = findViewById(R.id.win_tally);
@@ -51,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
       }
     };*/
     OnClickListener doorListener = (view) -> {
-         // ((ImageButton) view).setImageResource();
       okButton.setEnabled(true);
       selectionID = view.getId();
     };
@@ -64,37 +65,42 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onStart() {
     super.onStart();
+    bannerField.setText(R.string.banner_text);
+    startGame();
+  }
+
+  void startGame() {
     winTally.setText(getString(R.string.win_tally_format, wins));
     loseTally.setText(getString(R.string.lose_tally_format, losses));
-    bannerField.setText(R.string.banner_text);
+    selectionID = 0;
+    newGameButton.setVisibility(View.INVISIBLE); //makes button invisible
+    okButton.setVisibility(View.VISIBLE);
+    door1.setEnabled(true);
+    door1.setImageResource(R.drawable.reddoor);
+    door2.setEnabled(true);
+    door2.setImageResource(R.drawable.reddoor);
+    door3.setEnabled(true);
+    door3.setImageResource(R.drawable.reddoor);
     selectWinningSpace();
   }
 
   void selectWinningSpace() {
-    winningDoor = 0;//rng.nextInt(3);
+    activeDoors.clear();
     activeDoors.add(door1);
     activeDoors.add(door2);
     activeDoors.add(door3);
+    winningDoor = rng.nextInt(activeDoors.size());
     prizeDoor = activeDoors.remove(winningDoor);
     firstDoor();
   }
 
   void firstDoor() {
     messageField.setText(R.string.pick_a_door);
-    //OK_Button set inactive if no doors are selected
     okButton.setEnabled(false);
-    //When user selects a door, OK_Button is active
-    //When OK_Button is pressed, proceed to revealSecondDoor
-    okButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        revealSecondDoor();
-      }
-    });
+    okButton.setOnClickListener(v -> revealSecondDoor());
   }
 
   void revealSecondDoor() {
-    messageField.setText("hi");
     if (prizeDoor.getId() == selectionID) {
       int goat = rng.nextInt(activeDoors.size());
       activeDoors.get(goat).setEnabled(false);
@@ -110,21 +116,24 @@ public class MainActivity extends AppCompatActivity {
     }
     secondDoor();
   }
-//TODO FI X RAND SELCTION
+
   void secondDoor() {
     messageField.setText(R.string.choose_next_door);
-    //OK_Button set inactive if no doors are selected
-    //When user selects a door out of the remaining doors, OK_Button is active
-    //When OK_Button is pressed, proceed to revealWinningDoor
-  }
+    okButton.setOnClickListener(v -> revealWinningDoor());  }
 
   void revealWinningDoor() {
-    //if users door is winningDoor, reveal winningDoor and losingDoor and display winning toast
-    // add 1 to wins
-    //if users door is not winningDoor, reveal winningDoor and losingDoor and display losing toast
-    // add 1 to losses
-    //change OK button to new game button
-    //if OK button is selected, go back to select winningSpace
+    messageField.setText(String.valueOf(prizeDoor.getId()));
+    if (prizeDoor.getId() == selectionID) {
+      messageField.setText(R.string.win_text);
+      wins++;
+    }
+    else {
+      messageField.setText(R.string.lost_text);
+      losses++;
+    }
+    okButton.setVisibility(View.INVISIBLE);
+    newGameButton.setVisibility(View.VISIBLE);
+    newGameButton.setOnClickListener(v -> startGame());
   }
 
   @Override
