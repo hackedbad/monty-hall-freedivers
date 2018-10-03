@@ -17,4 +17,17 @@
     <item name="android:padding">@dimen/door_padding</item>
   </style>
 
+  <style name="OkayButton" parent="AppTheme">
+    <item name="android:layout_width">@dimen/okay_width</item>
+    <item name="android:layout_height">@dimen/okay_height</item>
+    <item name="android:scaleType">fitCenter</item>
+    <item name="android:adjustViewBounds">true</item>
+  </style>
+
+  <style name="NewGameButton" parent="AppTheme">
+    <item name="android:layout_width">@dimen/new_game_width</item>
+    <item name="android:layout_height">@dimen/new_game_height</item>
+    <item name="android:scaleType">fitCenter</item>
+    <item name="android:adjustViewBounds">true</item>
+  </style>
 </resources>
