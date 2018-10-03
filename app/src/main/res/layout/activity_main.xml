@@ -60,6 +60,36 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintBottom_toTopOf="@id/message"/>
 
+  <ImageButton
+    android:id="@+id/door_1_goat"
+    style="@style/GoatButton"
+    android:src="@drawable/goatpic"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@id/message"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/door_2"
+    app:layout_constraintTop_toBottomOf="@id/win_tally"/>
+
+  <ImageButton
+    android:id="@+id/door_2_goat"
+    style="@style/GoatButton"
+    android:src="@drawable/goatpic"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@id/message"
+    app:layout_constraintLeft_toRightOf="@id/door_1"
+    app:layout_constraintRight_toLeftOf="@id/door_3"
+    app:layout_constraintTop_toBottomOf="@id/win_tally"/>
+
+  <ImageButton
+    android:id="@+id/door_3_goat"
+    style="@style/GoatButton"
+    android:src="@drawable/goatpic"
+    android:visibility="invisible"
+    app:layout_constraintBottom_toTopOf="@id/message"
+    app:layout_constraintLeft_toRightOf="@id/door_2"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/lose_tally"/>
+
   <TextView
     android:id="@+id/message"
     android:layout_width="wrap_content"
